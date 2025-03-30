@@ -38,7 +38,9 @@
 
 <h2>
 Ans--> brute force approach
-class Solution {
+<p>
+	
+ class Solution {
 public:
     int searchInsert(vector<int>& nums, int target) {
 
@@ -59,5 +61,6 @@ return nums.size();
         
     
 };
+</p>
 
 </h2>

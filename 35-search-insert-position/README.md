@@ -33,3 +33,31 @@
 	<li><code>nums</code> contains <strong>distinct</strong> values sorted in <strong>ascending</strong> order.</li>
 	<li><code>-10<sup>4</sup> &lt;= target &lt;= 10<sup>4</sup></code></li>
 </ul>
+
+
+
+<h2>
+Ans--> brute force approach
+class Solution {
+public:
+    int searchInsert(vector<int>& nums, int target) {
+
+        for(int i=0;i<nums.size();i++)
+        {
+            if(target==nums[i])
+            {
+                return i;
+            }
+            else if(nums[i]>target)
+            {
+                return i;
+            }
+        
+        }
+return nums.size();
+    }
+        
+    
+};
+
+</h2>

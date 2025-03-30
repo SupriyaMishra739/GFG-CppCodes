@@ -28,7 +28,7 @@ class Solution {
          for(int i=0;i<count0;i++){
              arr[i]=0;
          }
-         for(int i=count0;i<count0+count1;i++){
+         for(int i=count0;i<arr.size();i++){
              arr[i]=1;
          }
         

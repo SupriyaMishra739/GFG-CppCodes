@@ -37,3 +37,30 @@
 	<li><code>0 &lt;= arr[i] &lt;= 10<sup>6</sup></code></li>
 	<li><code>arr</code> is <strong>guaranteed</strong> to be a mountain array.</li>
 </ul>
+
+
+
+<p> 
+<h1>Brute force appraoch</h1>
+
+
+
+ class Solution {
+public:
+    int peakIndexInMountainArray(vector<int>& arr) {
+        int size=arr.size();
+
+
+        for(int i=1;i<size;i++)
+        {
+            if( !(arr[i]>arr[i-1]))
+            {
+                return i-1;
+
+            }
+        }
+        return 0;
+        
+    }
+};
+</p>

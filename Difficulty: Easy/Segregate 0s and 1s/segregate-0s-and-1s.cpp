@@ -12,30 +12,51 @@ class Solution {
   public:
     void segregate0and1(vector<int> &arr) {
         // code here
+      
         
-        // optimised code
-        int count0=0;
-         int count1=0;
+         // sort(arr.begin(), arr.end());-->brute force -time taken nlogn
          
-         for(int i=0;i<arr.size();i++){
-             if(arr[i]==0){
-                 count0++;
-             }
-             else{
-                 count1++;
-             }
-         }
-         for(int i=0;i<count0;i++){
-             arr[i]=0;
-         }
-         for(int i=count0;i<arr.size();i++){
-             arr[i]=1;
-         }
+       //  Method2 approach
+        //  int count0=0;
+        //  int count1=0;
+         
+        //  for(int i=0;i<arr.size();i++){
+        //      if(arr[i]==0){
+        //          count0++;
+        //      }
+        //      else{
+        //          count1++;
+        //      }
+        //  }
+        //  for(int i=0;i<count0;i++){
+        //      arr[i]=0;
+        //  }
+        //  for(int i=count0;i<arr.size();i++){
+        //      arr[i]=1;
+        //  }
         
-        //  sort(arr.begin(), arr.end());
+        
+        //method3 2 pointer approach
+        
+    int start=0, end=arr.size()-1;
+    
+    while(start<end){
+        if(arr[start]==0){
+            start++;
+        }
+        else if(arr[start]==1){
+            if(arr[end]==0){
+                swap(arr[start],arr[end]);
+                start++;
+                end--;
+            }
+            else if(arr[end]==1){
+                end--;
+            }
+        }
+    }
     }
 };
-
 
 //{ Driver Code Starts.
 int main() {

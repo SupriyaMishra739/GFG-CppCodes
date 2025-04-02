@@ -1,6 +1,39 @@
 class Solution {
 public:
 
+//Method 2(prefereble method solution)
+
+    int count(int i, vector<int> &dp){
+        if(i<=1){
+            return 1;
+        }
+        if(dp[i]!=-1){
+            return dp[i];
+        }
+
+        return  dp[i]=count(i-1, dp)+count(i-2,dp);
+    }
+
+  int climbStairs(int n) {
+        
+      vector<int> dp(n+1,-1);
+    int ans=  count(n,dp);
+    return ans;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
 // //Top down approach
 
 //     int count(int i, int n,vector<int> &dp){
@@ -54,18 +87,18 @@ public:
 
      //space optimization
 
-      int climbStairs(int n) {
+    //   int climbStairs(int n) {
         
-        int curr, next=1,next2=0;
+    //     int curr, next=1,next2=0;
 
-        for(int i=n-1;i>=0;i--){
-            curr=next+next2;
-            next2=next;
-            next=curr;
-        }
+    //     for(int i=n-1;i>=0;i--){
+    //         curr=next+next2;
+    //         next2=next;
+    //         next=curr;
+    //     }
 
-        return curr;
-        }
+    //     return curr;
+    //     }
 
       
 

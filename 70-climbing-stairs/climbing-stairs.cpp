@@ -35,28 +35,43 @@ public:
 //     }
 
 
-//Bottom up approach
-        int climbStairs(int n) {
-        //create a dp array
+// //Bottom up approach
+//         int climbStairs(int n) {
+//         //create a dp array
         
 
-        vector<int> dp(n+2,-1);
-        dp[n]=1;
-        dp[n+1]=0;
-        //start traversing from end
+//         vector<int> dp(n+2,-1);
+//         dp[n]=1;
+//         dp[n+1]=0;
+//         //start traversing from end
+
+//         for(int i=n-1;i>=0;i--){
+//             dp[i]=dp[i+1]+dp[i+2];
+//         }
+//         return dp[0];
+//         }
+     
+
+     //space optimization
+
+      int climbStairs(int n) {
+        
+        int curr, next=1,next2=0;
 
         for(int i=n-1;i>=0;i--){
-            dp[i]=dp[i+1]+dp[i+2];
+            curr=next+next2;
+            next2=next;
+            next=curr;
         }
-        return dp[0];
-     
+
+        return curr;
+        }
 
       
 
 
 
-        
-    }
+  
 
 
 };

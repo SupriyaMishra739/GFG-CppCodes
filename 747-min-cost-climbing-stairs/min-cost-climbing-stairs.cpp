@@ -31,17 +31,35 @@ public:
 
     //Bottom Up Approach
 
+    //     int minCostClimbingStairs(vector<int>& cost) {
+    //     int n=cost.size();
+    //     vector<int> dp(n+1,-1);
+    //     dp[0]=0;
+    //     dp[1]=0;
+
+    //     for(int i=2;i<=n;i++)
+    //     {
+    //       dp[i]= min(cost[i-2]+dp[i-2], cost[i-1]+ dp[i-1]);
+    //     }
+    //     return dp[n];
+        
+    // }
+
+
+    //Space optimization approach
+
         int minCostClimbingStairs(vector<int>& cost) {
         int n=cost.size();
-        vector<int> dp(n+1,-1);
-        dp[0]=0;
-        dp[1]=0;
+        int curr;
+        int prev=0,prev1=0;
 
         for(int i=2;i<=n;i++)
         {
-          dp[i]= min(cost[i-2]+dp[i-2], cost[i-1]+ dp[i-1]);
+          curr=min(cost[i-1]+prev,cost[i-2]+prev1);
+          prev1=prev;
+          prev=curr;
         }
-        return dp[n];
+        return curr;
         
     }
 

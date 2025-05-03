@@ -7,7 +7,7 @@ using namespace std;
 
 class Solution {
 public:
-    int findSubString(string& s) {
+    int findSubString(const string& s) {  // Use 'const string& s' for safety
         int first = 0, second = 0, len = s.size(), diff = 0;
         vector<int> count(256, 0);
         

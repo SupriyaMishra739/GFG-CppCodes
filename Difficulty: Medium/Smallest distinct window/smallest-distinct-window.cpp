@@ -6,38 +6,53 @@ using namespace std;
 // } Driver Code Ends
 
 class Solution {
-  public:
+public:
     int findSubString(string& s) {
-        int n = s.size();
-        if (n == 0) return 0;
-
-        // Step 1: Find number of unique characters in s
-        unordered_set<char> uniqueChars(s.begin(), s.end());
-        int totalUnique = uniqueChars.size();
-
-        // Step 2: Sliding window
-        vector<int> freq(256, 0);
-        int start = 0, minLen = n + 1, count = 0;
-
-        for (int end = 0; end < n; ++end) {
-            freq[s[end]]++;
-            if (freq[s[end]] == 1) count++;
-
-            // Shrink the window
-            while (count == totalUnique) {
-                minLen = min(minLen, end - start + 1);
-
-                freq[s[start]]--;
-                if (freq[s[start]] == 0) count--;
-                start++;
+        int first = 0, second = 0, len = s.size(), diff = 0;
+        vector<int> count(256, 0);
+        
+        // Calculate the number of distinct characters
+        while (first < s.size()) {
+            if (count[s[first]] == 0) {
+                diff++;
+            }
+            count[s[first]]++;
+            first++;
+        }
+        
+        // Reset count array
+        for (int i = 0; i < 256; i++) {
+            count[i] = 0;
+        }
+        
+        first = 0;
+        second = 0;
+        int min_len = s.size();
+        int current_diff = 0;
+        
+        while (second < s.size()) {
+            // Expand the window until all distinct characters are included
+            if (count[s[second]] == 0) {
+                current_diff++;
+            }
+            count[s[second]]++;
+            second++;
+            
+            // Once all distinct characters are included, try to shrink the window from the left
+            while (current_diff == diff) {
+                min_len = min(min_len, second - first);
+                count[s[first]]--;
+                if (count[s[first]] == 0) {
+                    current_diff--;
+                }
+                first++;
             }
         }
-
-        return minLen;
+        
+        return min_len;
     }
 };
 
-            
 
 //{ Driver Code Starts.
 //      Driver code

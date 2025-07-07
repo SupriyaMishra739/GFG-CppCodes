@@ -1,18 +1,27 @@
 class Solution {
 public:
-    int reverse(int x) {
-        int ans = 0; // Initialize the reversed number to 0
-        while (x != 0) {
-            int digit = x % 10; // Get the last digit of x
-            
-            // Check for overflow/underflow before updating ans
-            if ((ans > INT_MAX / 10) || (ans < INT_MIN / 10)) {
-                return 0; // Return 0 if reversing x would cause overflow/underflow
+    int reverse(int num) {
+        int revNum=0;
+
+
+        while(num!=0)
+        {
+            int lastDigit= num%10;
+
+            if(revNum> INT_MAX/10 || revNum< INT_MIN/10)
+            {
+                return 0;
             }
-            
-            ans = ans * 10 + digit; // Append the digit to the reversed number
-            x = x / 10; // Remove the last digit from x
+            revNum=revNum*10+lastDigit;
+
+                num=num/10;
+
+              
+
         }
-        return ans; // Return the reversed number
+          return revNum;
+
+
     }
+    
 };

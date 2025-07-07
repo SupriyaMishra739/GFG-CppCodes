@@ -20,6 +20,7 @@ class Solution {
              
          }
      }
+    
      int count=0;
      for(int i=index1+1;i<index2;i++){
          count++;

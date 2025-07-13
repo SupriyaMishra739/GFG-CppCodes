@@ -13,11 +13,7 @@ public:
                 unSet.erase(ch);
             }
         }
-        if(!unSet.empty()){
-            return false;
-
-        }
-        return true;
+       return unSet.empty();
         
     }
 };

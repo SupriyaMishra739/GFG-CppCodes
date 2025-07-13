@@ -1,46 +1,27 @@
 class Solution {
 public:
-    int longestPalindrome(string s) {
-        vector<int> lower(26,0);
-        vector<int> upper(26,0);
+    int longestPalindrome(string word) {
+        unordered_map<char, int> unMap;
+        for (char ch : word) {
+            unMap[ch]++;
+        }
 
-        //couting the freq and storing in lower and upper
-        for(int i=0;i<s.size();i++){
-            if(s[i]>='a'){
-                lower[s[i]-'a']++;
+        int res = 0;
+        bool oddFound = false;
 
-            }
-            else { //s[i]>='A'
-             upper[s[i]-'A']++;
-                
+        for (auto it : unMap) {
+            if (it.second % 2 == 0) {
+                res += it.second;
+            } else {
+                res += it.second - 1;
+                oddFound = true;
             }
         }
 
-        //
-        int count=0;
-        bool odd=0;
-        for(int i=0;i<26;i++){
-            if(lower[i]%2==0){ //even character in the lower array
-            count=count+lower[i]; //directly add them  to result
-
-
-            }
-            else{  //odd character in the lower array
-                count=count+lower[i]-1;
-                odd=1;
-            }
-              if(upper[i]%2==0){ //even character in the lower array
-            count=count+upper[i]; //directly add them  to result
-
-
-            }
-            else{  //odd character in the lower array
-                count=count+upper[i]-1;
-                odd=1;
-            }
-            
+        if (oddFound) {
+            return res + 1;
         }
-        return count+odd;
-        
+
+        return res;
     }
 };

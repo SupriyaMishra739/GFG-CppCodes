@@ -2,22 +2,22 @@ class Solution {
 public:
     bool checkIfPangram(string sentence) {
 
-        vector<bool> alphabet(26,false);
-        int count=0; //count of unique characters
+        unordered_set<char> unSet;
 
-        for(int i=0;i<sentence.size();i++){
-            int index= sentence[i]-'a';
-             if (alphabet[index]==false) { // If this letter is encountered for the first time
-                alphabet[index] = true;
-                count++;  // Increment the count of unique letters
-            }
-            if (count == 26) return true;
-
+        for(char ch='a';ch<='z';ch++){
+            unSet.insert(ch);
         }
 
-         return count == 26;
+        for(char ch:sentence){
+            if(unSet.count(ch)){
+                unSet.erase(ch);
+            }
+        }
+        if(!unSet.empty()){
+            return false;
 
-
+        }
+        return true;
         
     }
 };

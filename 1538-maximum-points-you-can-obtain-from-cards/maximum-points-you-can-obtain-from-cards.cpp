@@ -11,7 +11,7 @@ public:
 
         int maxSum = total;
 
-        // Try taking i elements from the back instead of the front
+        // Slide window: remove i elements from front and take i from back
         for (int i = 1; i <= k; ++i) {
             total -= arr[k - i];       // Remove from front
             total += arr[n - i];       // Add from back

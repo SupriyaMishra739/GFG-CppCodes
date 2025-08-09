@@ -8,9 +8,9 @@ public:
             m[i]++;
         }
 
-        for(int i:nums){
-            if(m[i]==1){
-                res.push_back(i);
+        for(auto it:m){
+            if(it.second==1){
+                res.push_back(it.first);
 
             }
         }
